@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "34907bc4-5467-4c24-bac2-fc081b2f5a73",
-		"name": "API Collection (T8)",
+		"name": "APICollection(T8)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23154523"
 	},
@@ -62,9 +62,9 @@
 									"console.log(jsonData.title)\r",
 									"console.log(jsonData.paymentCurrency)\r",
 									"\r",
-									"pm.environment.set(\"apiVersion\", \"6.3.8.0\");\r",
+									"/**pm.environment.set(\"apiVersion\", \"6.3.8.0\");\r",
 									"pm.environment.set(\"title\", \"Fusio\");\r",
-									"pm.environment.set(\"paymentCurrency\", \"EUR\");\r",
+									"pm.environment.set(\"paymentCurrency\", \"EUR\");*/\r",
 									"\r",
 									"\r",
 									"pm.test(\"Status code should be 200\", function () {\r",
@@ -201,9 +201,10 @@
 									"console.log(jsonData)\r",
 									"\r",
 									"const response = pm.response.json();\r",
-									"console.log(response[1].name)\r",
+									"console.log(response[0].id)\r",
+									"console.log(response[3].id)\r",
 									"\r",
-									"pm.environment.set(\"bookId\", \"response[1].name\");\r",
+									"pm.environment.set(\"bookOneId\", response[1].id);\r",
 									"\r",
 									"pm.test(\"Status code should be 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -212,13 +213,13 @@
 									"pm.test(\"Status code name should have an OK string\", function () {\r",
 									"    pm.response.to.have.status(\"OK\"); \r",
 									"});\r",
-									"//var jsonData = pm.response.json();\r",
-									"//console.log(jsonData)\r",
 									"\r",
 									"\r",
 									"//pm.test(\"Body matches The Russian\", function () {\r",
 									"   // pm.expect(pm.response.text()).to.include(\"The Russian\");\r",
 									"//});\r",
+									"pm.globals.set(\"bookId\", \"1\");\r",
+									"\r",
 									"\r",
 									"pm.test(\"Body matches true string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"true\");\r",
@@ -245,12 +246,10 @@
 									"});\r",
 									"\r",
 									"// print any kind of variables/message on the screen\r",
-									"//const response = pm.response.json();\r",
-									"//console.log(response[1].name)\r",
+									"/**console.log(response[1].name)\r",
 									"console.log(response[2].name)\r",
 									"console.log(response[3].name)\r",
-									"\r",
-									"\r",
+									"console.log(response[26].name)*/\r",
 									"\r",
 									"pm.test(\"Second response name should be The Vanishing Half\", function\r",
 									"() {\r",
@@ -321,7 +320,7 @@
 									"const response = pm.response.json();\r",
 									"console.log(response[1].name)\r",
 									"\r",
-									"pm.environment.set(\"bookId\", \"response[1].name\");\r",
+									"pm.environment.set(\"bookOneId\", response[1].id);\r",
 									"\r",
 									"pm.test(\"Status code should be 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -337,6 +336,8 @@
 									"//pm.test(\"Body matches The Russian\", function () {\r",
 									"   // pm.expect(pm.response.text()).to.include(\"The Russian\");\r",
 									"//});\r",
+									"\r",
+									"pm.globals.set(\"bookId\", \"1\");\r",
 									"\r",
 									"pm.test(\"Body matches true string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"true\");\r",
@@ -438,13 +439,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const OrderId = pm.response.json();\r",
-									"console.log(OrderId.orderId);\r",
+									"const OrderID = pm.response.json();\r",
+									"console.log(OrderID.orderId);\r",
 									"\r",
-									"pm.environment.set(\"orderId\", \"OrderId.orderId\");\r",
+									"pm.environment.set(\"orderID\", OrderID.orderId);\r",
 									"\r",
-									"\r",
-									"pm.globals.set(\"OrderId\", OrderId.orderId);\r",
 									"\r",
 									"pm.test(\"Status code should be 201\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -492,87 +491,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"bookId\": {{bookId}},\n  \"customerName\": \"John\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrlSb}}/orders",
-							"host": [
-								"{{baseUrlSb}}"
-							],
-							"path": [
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Place a book order Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const OrderId = pm.response.json();\r",
-									"console.log(OrderId.orderId);\r",
-									"\r",
-									"pm.environment.set(\"orderId\", \"OrderId.orderId\");\r",
-									"\r",
-									"\r",
-									"pm.globals.set(\"OrderId\", OrderId.orderId);\r",
-									"\r",
-									"pm.test(\"Status code should be 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code name should have a Created string\", function () {\r",
-									"    pm.response.to.have.status(\"Created\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"var jsonData = pm.response.json();\r",
-									"console.log(jsonData)\r",
-									"console.log(jsonData.created)\r",
-									"\r",
-									"pm.test(\"created should be true\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.created).to.eql(true);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body matches orderId string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"orderId\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body matches created string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"created\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"bookId\": {{bookId}},\n  \"customerName\": \"Jennifer\"\n}",
+							"raw": "{\n  \"bookId\": {{bookOneId}},\n  \"customerName\": \"John\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -598,11 +517,88 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const OrderId = pm.response.json();\r",
-									"console.log(OrderId.orderId);\r",
-									"pm.environment.set(\"OrderId\", \"OrderId.orderId\");\r",
+									"const OrderID = pm.response.json();\r",
+									"console.log(OrderID.orderId);\r",
 									"\r",
-									"pm.globals.set(\"OrderId\", OrderId.orderId);\r",
+									"pm.environment.set(\"orderID\", OrderID.orderId);\r",
+									"\r",
+									"pm.test(\"Status code should be 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name should have a Created string\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData)\r",
+									"console.log(jsonData.created)\r",
+									"\r",
+									"pm.test(\"created should be true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.created).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches orderId string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"orderId\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches created string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"created\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bookId\": {{bookOneId}},\n  \"customerName\": \"Jennifer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlSb}}/orders",
+							"host": [
+								"{{baseUrlSb}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place a book order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const OrderID = pm.response.json();\r",
+									"console.log(OrderID.orderId);\r",
+									"\r",
+									"pm.environment.set(\"orderID\", OrderID.orderId);\r",
+									"\r",
 									"\r",
 									"pm.test(\"Status code should be 201\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -648,7 +644,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"bookId\": {{bookId}},\n  \"customerName\": \"Michael\"\n}",
+							"raw": "{\n  \"bookId\": {{bookOneId}},\n  \"customerName\": \"Michael\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -684,11 +680,9 @@
 									"\r",
 									"const response = pm.response.json();\r",
 									"console.log(response[0].customerName)\r",
-									"console.log(response[26].customerName)\r",
-									"console.log(response[2].bookId)\r",
-									"\r",
-									"pm.environment.set(\"customerName\", \"response[0].customerName\");\r",
-									"pm.environment.set(\"customerName\", \"response[26].customerName\");\r",
+									"console.log(response[9].customerName)\r",
+									"console.log(response[12].customerName)\r",
+									"console.log(response[2].bookOneId)\r",
 									"\r",
 									"pm.test(\"Status code should be 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -715,22 +709,22 @@
 									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Body matches customerName string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"customerName\");\r",
-									"});\r",
 									"\r",
 									"pm.test(\"The first response customerName should be John\", function () {\r",
 									"    pm.expect(response[0].customerName).to.eql(\"John\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"The second response customerName should be Michael\", function () {\r",
-									"    pm.expect(response[26].customerName).to.eql(\"Michael\");\r",
+									"    pm.expect(response[9].customerName).to.eql(\"Michael\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"The third response bookId should be 1\", function () {\r",
-									"    pm.expect(response[2].bookId).to.eql(1);\r",
+									"pm.test(\"The second response customerName should be Jennifer\", function () {\r",
+									"    pm.expect(response[12].customerName).to.eql(\"Jennifer\");\r",
 									"});\r",
-									""
+									"\r",
+									"pm.test(\"The third response bookId should be 3\", function () {\r",
+									"    pm.expect(response[2].bookId).to.eql(3);\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -799,21 +793,18 @@
 									"console.log(jsonData.bookId)\r",
 									"console.log(jsonData.customerName)\r",
 									"\r",
-									"pm.environment.set(\"id\", \"jsonData.id\");\r",
+									"//pm.environment.set(\"id\", \"jsonData.id\");\r",
 									"\r",
-									"/**pm.test(\"id should be U81Z0OkbDpjfYshAwmAQV\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"U81Z0OkbDpjfYshAwmAQV\");\r",
-									"});*/\r",
 									"\r",
-									"pm.test(\"id should be U81Z0OkbDpjfYshAwmAQV\", function () {\r",
-									"        pm.expect(jsonData.id).to.eql(\"ok9hG7pG4ptduAJ4yc7Ga\")\r",
-									"    });\r",
+									"/**pm.test(\"id should be AqHfRqOI_H2LJUgWTQPcG\", function () {\r",
+									"        pm.expect(jsonData.id).to.eql(\"AqHfRqOI_H2LJUgWTQPcG\")\r",
+									"    });*/\r",
 									"\r",
-									"pm.test(\"bookId should be 1\", function () {\r",
-									"    pm.expect(jsonData.bookId).to.eql(1);\r",
+									"pm.test(\"bookId should be 3\", function () {\r",
+									"    pm.expect(jsonData.bookId).to.eql(3);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"custommerName should be John\", function () {\r",
+									"pm.test(\"customerName should be John\", function () {\r",
 									"    pm.expect(jsonData.customerName).to.eql(\"John\");\r",
 									"});\r",
 									""
@@ -840,7 +831,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"customerName\": \"Jennifer\"\n}",
+							"raw": "{\n  \"customerName\": \"John\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -859,7 +850,7 @@
 							"variable": [
 								{
 									"key": "orderId",
-									"value": "{{orderID}}"
+									"value": "{{orderId}}"
 								}
 							]
 						}
@@ -878,12 +869,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code should be 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
+									"pm.test(\"Status code should be 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code name should have a No Content string\", function () {\r",
-									"    pm.response.to.have.status(\"No Content\");\r",
+									"pm.test(\"Status code name should have a Not Found string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
 									"});\r",
 									""
 								],

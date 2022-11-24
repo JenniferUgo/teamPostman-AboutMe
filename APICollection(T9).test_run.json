@@ -1,18 +1,18 @@
 {
-	"id": "22394168-5b42-4929-a6b4-9c9385ea7c57",
-	"name": "API Collection (T9)",
-	"timestamp": "2022-11-22T17:48:00.488Z",
+	"id": "5241870b-530d-462e-a919-75c5d44751d8",
+	"name": "APICollection(T9)",
+	"timestamp": "2022-11-24T16:26:32.242Z",
 	"collection_id": "23154523-34907bc4-5467-4c24-bac2-fc081b2f5a73",
 	"folder_id": 0,
 	"environment_id": "23154523-0f0b37fc-543b-4631-8d87-f6ff4a196e22",
-	"totalPass": 63,
+	"totalPass": 62,
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "46497d77-575b-4cc7-b4c0-0227c4f824f2",
 			"name": "Get All To Do Entries",
 			"url": "https://demo.fusio-project.org/index.php/todo",
-			"time": 1413,
+			"time": 1791,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -20,7 +20,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				1413
+				1791
 			],
 			"allTests": [
 				{}
@@ -93,7 +93,7 @@
 			"id": "1e951215-9af3-46d8-8515-e5b00f155974",
 			"name": "Get entry per ID",
 			"url": "https://demo.fusio-project.org/todo/?todo_id=2",
-			"time": 282,
+			"time": 269,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -101,7 +101,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				282
+				269
 			],
 			"allTests": [
 				{}
@@ -111,7 +111,7 @@
 			"id": "e84c5e7e-cd56-4183-8c57-f153c8ed6769",
 			"name": "Get Books",
 			"url": "https://simple-books-api.glitch.me/books?type=fiction",
-			"time": 335,
+			"time": 294,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -171,7 +171,7 @@
 				}
 			},
 			"times": [
-				335
+				294
 			],
 			"allTests": [
 				{
@@ -192,7 +192,7 @@
 			"id": "e30f26c2-790f-47e6-badb-405e3db26ce8",
 			"name": "Get a Valid Book",
 			"url": "https://simple-books-api.glitch.me/books?type=fiction",
-			"time": 264,
+			"time": 1019,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -252,7 +252,7 @@
 				}
 			},
 			"times": [
-				264
+				1019
 			],
 			"allTests": [
 				{
@@ -273,7 +273,7 @@
 			"id": "2444aad4-b65d-46c6-9222-e75e2215eb67",
 			"name": "Place a book order",
 			"url": "https://simple-books-api.glitch.me/orders",
-			"time": 452,
+			"time": 1498,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -308,7 +308,7 @@
 				}
 			},
 			"times": [
-				452
+				1498
 			],
 			"allTests": [
 				{
@@ -322,9 +322,9 @@
 		},
 		{
 			"id": "827a40af-e729-46b7-9c9e-9485091519fb",
-			"name": "Place a book order Copy",
+			"name": "Place a book order",
 			"url": "https://simple-books-api.glitch.me/orders",
-			"time": 389,
+			"time": 2130,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -359,7 +359,7 @@
 				}
 			},
 			"times": [
-				389
+				2130
 			],
 			"allTests": [
 				{
@@ -375,7 +375,7 @@
 			"id": "9aef3b9a-6547-4601-861d-93bb01996b54",
 			"name": "Place a book order",
 			"url": "https://simple-books-api.glitch.me/orders",
-			"time": 301,
+			"time": 1256,
 			"responseCode": {
 				"code": 201,
 				"name": "Created"
@@ -410,7 +410,7 @@
 				}
 			},
 			"times": [
-				301
+				1256
 			],
 			"allTests": [
 				{
@@ -426,7 +426,7 @@
 			"id": "249de6ec-3def-4ae5-8bb1-23fc1c4ccc5a",
 			"name": "Get all orders",
 			"url": "https://simple-books-api.glitch.me/orders",
-			"time": 456,
+			"time": 1119,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -438,10 +438,10 @@
 				"Body matches Michael string": true,
 				"Body matches bookId string": true,
 				"Body matches id": true,
-				"Body matches customerName string": true,
 				"The first response customerName should be John": true,
 				"The second response customerName should be Michael": true,
-				"The third response bookId should be 1": true
+				"The second response customerName should be Jennifer": true,
+				"The third response bookId should be 3": true
 			},
 			"testPassFailCounts": {
 				"Status code should be 200": {
@@ -468,10 +468,6 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"Body matches customerName string": {
-					"pass": 1,
-					"fail": 0
-				},
 				"The first response customerName should be John": {
 					"pass": 1,
 					"fail": 0
@@ -480,13 +476,17 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"The third response bookId should be 1": {
+				"The second response customerName should be Jennifer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The third response bookId should be 3": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				456
+				1119
 			],
 			"allTests": [
 				{
@@ -496,18 +496,18 @@
 					"Body matches Michael string": true,
 					"Body matches bookId string": true,
 					"Body matches id": true,
-					"Body matches customerName string": true,
 					"The first response customerName should be John": true,
 					"The second response customerName should be Michael": true,
-					"The third response bookId should be 1": true
+					"The second response customerName should be Jennifer": true,
+					"The third response bookId should be 3": true
 				}
 			]
 		},
 		{
 			"id": "93dd8adb-40a7-4fda-ab54-ae0d7dfa921f",
 			"name": "Get an order",
-			"url": "https://simple-books-api.glitch.me/orders/ok9hG7pG4ptduAJ4yc7Ga",
-			"time": 248,
+			"url": "https://simple-books-api.glitch.me/orders/Wc9Pz46GdQisoAO_o1V-7",
+			"time": 418,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -515,9 +515,8 @@
 			"tests": {
 				"Status code should be 200": true,
 				"Status code name should have an OK string": true,
-				"id should be U81Z0OkbDpjfYshAwmAQV": true,
-				"bookId should be 1": true,
-				"custommerName should be John": true
+				"bookId should be 3": true,
+				"customerName should be John": true
 			},
 			"testPassFailCounts": {
 				"Status code should be 200": {
@@ -528,68 +527,63 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"id should be U81Z0OkbDpjfYshAwmAQV": {
+				"bookId should be 3": {
 					"pass": 1,
 					"fail": 0
 				},
-				"bookId should be 1": {
-					"pass": 1,
-					"fail": 0
-				},
-				"custommerName should be John": {
+				"customerName should be John": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				248
+				418
 			],
 			"allTests": [
 				{
 					"Status code should be 200": true,
 					"Status code name should have an OK string": true,
-					"id should be U81Z0OkbDpjfYshAwmAQV": true,
-					"bookId should be 1": true,
-					"custommerName should be John": true
+					"bookId should be 3": true,
+					"customerName should be John": true
 				}
 			]
 		},
 		{
 			"id": "3e92f422-ef46-48d2-96fb-def2049f83f3",
 			"name": "Delete an order",
-			"url": "https://simple-books-api.glitch.me/orders/n6zrGa4JPTnuwFIeoNpRG?created=true",
-			"time": 1458,
+			"url": "https://simple-books-api.glitch.me/orders/%7B%7BorderIdTwo%7D%7D?created=true",
+			"time": 3325,
 			"responseCode": {
-				"code": 204,
-				"name": "No Content"
+				"code": 404,
+				"name": "Not Found"
 			},
 			"tests": {
-				"Status code should be 204": true,
-				"Status code name should have a No Content string": true
+				"Status code should be 404": true,
+				"Status code name should have a Not Found string": true
 			},
 			"testPassFailCounts": {
-				"Status code should be 204": {
+				"Status code should be 404": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Status code name should have a No Content string": {
+				"Status code name should have a Not Found string": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				1458
+				3325
 			],
 			"allTests": [
 				{
-					"Status code should be 204": true,
-					"Status code name should have a No Content string": true
+					"Status code should be 404": true,
+					"Status code name should have a Not Found string": true
 				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 6027,
+	"totalTime": 13548,
 	"collection": {
 		"requests": [
 			{
